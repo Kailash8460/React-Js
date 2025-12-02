@@ -1,0 +1,11 @@
+/* app.css — V5 layout: responsive, balanced grid */
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(18px, 2.5vw, 56px);
+  padding: clamp(36px, 6vw, 120px);
+  max-width: 2080px;
+  margin: 0 auto;
+  perspective: 2400px;
+}

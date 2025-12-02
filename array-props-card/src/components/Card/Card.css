@@ -1,0 +1,473 @@
+/* ==============================================
+   GOD-LIMIT V2 — LIQUID DEPTH CARD SYSTEM
+   ============================================== */
+
+/* .card {
+    width: clamp(280px, 30vw, 380px);
+    padding: clamp(32px, 3vw, 46px);
+
+    background: linear-gradient(to bottom right,
+            #1b2433,
+            #121822);
+
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.55),
+        inset 0 0 22px rgba(255, 255, 255, 0.03);
+
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    transform-style: preserve-3d;
+} */
+
+/* Holographic Shine Layer */
+/* .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 25% 0%,
+            rgba(255, 255, 255, 0.08),
+            transparent 60%);
+    opacity: 0.5;
+    transition: opacity var(--transition-slow);
+}
+
+.card:hover::before {
+    opacity: 0.85;
+} */
+
+/* 3D Lift */
+/* .card:hover {
+    transform: translateY(-14px) scale(1.04);
+    box-shadow:
+        0 28px 70px rgba(0, 0, 0, 0.65),
+        0 0 40px rgba(170, 180, 255, 0.25);
+} */
+
+/* Image */
+/* .card img {
+    height: clamp(95px, 8vw, 135px);
+    width: clamp(95px, 8vw, 135px);
+
+    border-radius: 50%;
+    object-fit: cover;
+
+    border: 3px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 12px 45px rgba(0, 0, 0, 0.56),
+        0 0 25px rgba(160, 175, 255, 0.25),
+        inset 0 0 14px rgba(255, 255, 255, 0.08);
+
+    transition: var(--transition-slow);
+}
+
+.card:hover img {
+    transform: translateY(-6px) scale(1.08);
+    filter: brightness(1.10);
+} */
+
+/* Name & Text */
+/* .card h3 {
+    color: var(--white);
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    letter-spacing: 0.3px;
+}
+
+.card p {
+    color: var(--primary-soft);
+    font-size: 0.96rem;
+    line-height: 1.7;
+    margin-top: 10px;
+} */
+
+/* BUTTON — God-level micro interactions */
+/* .btn {
+    margin-top: 26px;
+
+    padding: 12px 26px;
+    border-radius: 12px;
+    font-weight: 600;
+
+    background: var(--primary);
+    color: #000;
+    border: none;
+
+    cursor: pointer;
+    transform: translateY(0);
+
+    box-shadow:
+        0 8px 20px rgba(180, 195, 255, 0.40),
+        inset 0 0 8px rgba(255, 255, 255, 0.15);
+
+    transition: var(--transition);
+}
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.06);
+    filter: brightness(1.15);
+
+    box-shadow:
+        0 18px 35px rgba(180, 195, 255, 0.55),
+        inset 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+.btn:active {
+    transform: scale(0.94);
+    filter: brightness(0.95);
+} */
+
+/* NEW VERSION 2 */
+
+/* ==============================================
+   GOD-LIMIT V3 — CARD SYSTEM
+   ============================================== */
+
+/* .card {
+    width: clamp(270px, 28vw, 380px);
+    padding: clamp(32px, 3vw, 46px);
+
+    background: linear-gradient(to bottom right, #1b2433, #121822);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.55),
+        inset 0 0 18px rgba(255, 255, 255, 0.03);
+
+    transform-style: preserve-3d;
+    will-change: transform, box-shadow;
+    transition: var(--transition-slow);
+} */
+
+/* Parallax glow "ring" */
+/* .card::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle,
+            rgba(150, 160, 255, 0.07),
+            transparent 70%);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: var(--transition-slow);
+}
+
+.card:hover::after {
+    opacity: 1;
+    transform: scale(1);
+} */
+
+/* Moving shine */
+/* .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(120deg,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 50%);
+    opacity: 0.3;
+    transition: opacity var(--transition-slow),
+        transform var(--transition-slow);
+}
+
+.card:hover::before {
+    opacity: 0.7;
+    transform: translateX(12%) translateY(-12%);
+} */
+
+/* 3D tilt */
+/* .card:hover {
+    transform:
+        rotateX(8deg) rotateY(-8deg) translateY(-14px) scale(1.04);
+} */
+
+/* IMAGE ----------------------------------- */
+
+/* .card img {
+    height: clamp(95px, 8vw, 135px);
+    width: clamp(95px, 8vw, 135px);
+
+    border-radius: 50%;
+    object-fit: cover;
+
+    border: 3px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 14px 38px rgba(0, 0, 0, 0.55),
+        0 0 22px rgba(160, 175, 255, 0.25),
+        inset 0 0 12px rgba(255, 255, 255, 0.08);
+
+    transition: var(--transition-slow);
+    transform: translateZ(40px);
+}
+
+.card:hover img {
+    transform: translateZ(60px) scale(1.1);
+    filter: brightness(1.12);
+} */
+
+/* TEXT ------------------------------------- */
+
+/* .card h3 {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    color: var(--white);
+    font-size: 1.45rem;
+    transform: translateZ(35px);
+}
+
+.card p {
+    color: var(--primary-soft);
+    font-size: 0.97rem;
+    margin-top: 10px;
+    line-height: 1.7;
+    transform: translateZ(25px);
+} */
+
+/* BUTTON ----------------------------------- */
+
+/* .btn {
+    margin-top: 26px;
+    padding: 12px 26px;
+
+    background: var(--primary);
+    color: #000;
+    border: none;
+
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transform: translateZ(30px);
+    transition: var(--transition);
+    box-shadow:
+        0 8px 20px rgba(180, 195, 255, 0.35),
+        inset 0 0 8px rgba(255, 255, 255, 0.15);
+}
+
+.btn:hover {
+    transform: translateZ(35px) scale(1.06);
+    filter: brightness(1.15);
+}
+
+.btn:active {
+    transform: translateZ(20px) scale(0.94);
+} */
+
+/* NEW VERSION 3 */
+
+/* card.css — GOD-LIMIT V4 (3D tilt, parallax lighting, spring easing) */
+
+/* card root */
+.card {
+    width: clamp(280px, 28vw, 420px);
+    padding: clamp(22px, 2.4vw, 46px);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.06));
+    border: 1px solid rgba(255, 255, 255, 0.045);
+    box-shadow: var(--shadow-1);
+    position: relative;
+    overflow: visible;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transition: transform var(--mid) cubic-bezier(.2, .9, .25, 1), box-shadow var(--mid);
+    will-change: transform, box-shadow, filter;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* lightweight 3D tilt mapping via CSS vars (driven by JS helper) */
+.card {
+    --mx: 0;
+    /* mouse delta x (-1..1) */
+    --my: 0;
+    /* mouse delta y (-1..1) */
+    --tilt-x: calc(var(--my) * 10deg);
+    /* vertical tilt */
+    --tilt-y: calc(var(--mx) * -14deg);
+    /* horizontal tilt */
+    --tilt-translateZ: 18px;
+    transform: perspective(1800px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+}
+
+/* hover intensify and spring-like lift */
+.card:hover {
+    transform: perspective(1800px) translateZ(var(--tilt-translateZ)) rotateX(calc(var(--tilt-x) * 1.12)) rotateY(calc(var(--tilt-y) * 1.12)) translateY(-18px) scale(var(--card-scale));
+    box-shadow: var(--shadow-2);
+    filter: saturate(1.04);
+}
+
+/* holographic moving sheen (parallax) */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -20% -10% auto -10%;
+    height: 50%;
+    background: radial-gradient(800px 360px at 12% 8%, rgba(212, 180, 106, 0.06), transparent 12%),
+        radial-gradient(420px 160px at 86% 82%, rgba(140, 180, 255, 0.03), transparent 18%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 0;
+    transform: translateZ(8px);
+    transition: transform var(--mid), opacity var(--mid);
+    opacity: 0.95;
+}
+
+/* dynamic directional sheen driven by JS via --mx/--my */
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.00) 30%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.42;
+    transform: translateX(calc(var(--mx) * 10%)) translateY(calc(var(--my) * -10%));
+    transition: transform var(--fast), opacity var(--mid);
+}
+
+/* IMAGE WRAP + ORBITAL AURA */
+.img-wrap {
+    display: inline-block;
+    padding: 6px;
+    border-radius: 999px;
+    position: relative;
+    z-index: 5;
+    transform: translateZ(40px) translateY(-6px);
+    transition: transform var(--mid);
+}
+
+.img-wrap::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 20%, rgba(212, 180, 106, 0.08), transparent 15%), radial-gradient(circle at 70% 80%, rgba(140, 180, 255, 0.06), transparent 20%);
+    filter: blur(14px);
+    opacity: 0.95;
+    transition: opacity var(--mid), transform var(--mid);
+}
+
+/* profile image */
+.card img {
+    width: clamp(96px, 10vw, 140px);
+    height: clamp(96px, 10vw, 140px);
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 18px 46px rgba(0, 0, 0, 0.65),
+        0 0 28px rgba(160, 175, 255, 0.20),
+        inset 0 0 16px rgba(255, 255, 255, 0.06);
+    transition: transform var(--mid) cubic-bezier(.22, .8, .22, 1), box-shadow var(--mid);
+}
+
+/* hover image pop */
+.card:hover img {
+    transform: translateZ(64px) translateY(-10px) scale(1.06);
+    box-shadow:
+        0 40px 120px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(160, 175, 255, 0.36),
+        inset 0 0 26px rgba(255, 255, 255, 0.10);
+}
+
+/* textual content */
+.card h3 {
+    font-size: clamp(1.02rem, 1.6vw, 1.5rem);
+    margin: 12px 0 6px;
+    color: var(--white);
+    transform: translateZ(40px);
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 0.96rem;
+    line-height: 1.68;
+    transform: translateZ(28px);
+    margin: 8px 0 10px;
+}
+
+/* CTA */
+.btn {
+    margin-top: 18px;
+    padding: 12px 26px;
+    border-radius: 12px;
+    background: linear-gradient(180deg, var(--primary), var(--primary));
+    color: #041018;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transform: translateZ(36px);
+    box-shadow: 0 12px 36px rgba(150, 170, 255, 0.26);
+    transition: transform var(--fast) cubic-bezier(.22, .8, .32, 1), box-shadow var(--fast), filter var(--fast);
+}
+
+.btn:hover {
+    transform: translateZ(46px) translateY(-6px) scale(1.05);
+    filter: brightness(1.07);
+    box-shadow: 0 28px 88px rgba(150, 170, 255, 0.38);
+}
+
+/* chip and accent */
+.accent {
+    width: 86px;
+    height: 6px;
+    margin: 14px auto;
+    border-radius: 12px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-2));
+    box-shadow: 0 10px 26px rgba(183, 154, 83, 0.12);
+}
+
+/* responsive tweaks */
+@media (max-width: 900px) {
+    .card {
+        transform: none !important;
+    }
+
+    .card:hover {
+        transform: translateY(-8px) scale(1.01);
+    }
+
+    .img-wrap {
+        transform: translateZ(10px);
+    }
+
+    .card img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .btn {
+        transform: translateZ(20px);
+    }
+}
+
+@media (max-width:480px) {
+    .card {
+        width: 92vw;
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .card img {
+        width: 96px;
+        height: 96px;
+    }
+
+    .btn {
+        padding: 10px 18px;
+    }
+}

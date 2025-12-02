@@ -1,0 +1,25 @@
+/* navbar.css — floating refined navbar */
+.navbar {
+    width: 100%;
+    padding: clamp(12px, 1.8vw, 22px) clamp(18px, 3vw, 36px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.06));
+    backdrop-filter: blur(10px) saturate(1.05);
+    -webkit-backdrop-filter: blur(10px) saturate(1.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar h2 {
+    color: var(--gold);
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    font-size: clamp(1rem, 1.5vw, 1.28rem);
+}

@@ -1,0 +1,512 @@
+/* ============================================================
+   GOD-LIMIT — ULTRA CINEMATIC THEME (FULL CSS)
+   - Drop-in with your existing markup (.parent, .card, .card img, .navbar etc)
+   - For best effect: add the small JS snippet (see comment) to update --cursor-x/--cursor-y
+   ============================================================ */
+
+/* -----------------------------
+   OPTIONAL JS (paste into a <script> to enable cursor parallax & tilt)
+   -----------------------------
+   <script>
+   // Minimal, tiny, high-performance cursor -> CSS-vars bridge
+   (function(){
+     const root = document.documentElement;
+     let raf = null;
+     document.addEventListener('pointermove', e=>{
+       const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+       const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+       const x = e.clientX / vw;
+       const y = e.clientY / vh;
+       // throttle with rAF
+       if(raf) cancelAnimationFrame(raf);
+       raf = requestAnimationFrame(()=> {
+         root.style.setProperty('--cursor-x', x.toFixed(4));
+         root.style.setProperty('--cursor-y', y.toFixed(4));
+       });
+     }, {passive:true});
+     // optional center reset on leave
+     document.addEventListener('pointerleave', ()=> {
+       document.documentElement.style.setProperty('--cursor-x','0.5');
+       document.documentElement.style.setProperty('--cursor-y','0.5');
+     });
+     // init
+     document.documentElement.style.setProperty('--cursor-x','0.5');
+     document.documentElement.style.setProperty('--cursor-y','0.5');
+   })();
+   </script>
+*/
+
+/* -----------------------------
+   ROOT (extends your variables; safe defaults)
+   ----------------------------- */
+:root {
+  --bg: #0d1117;
+  --surface: #111721;
+  --surface-light: #1a2230;
+  --gold: #d4b46a;
+  --gold-2: #b79a53;
+  --primary: #b8c6ff;
+  --primary-muted: #8fa0d6;
+  --white: #f4f7fb;
+  --text: #ced6e0;
+
+  --radius: 14px;
+  --radius-lg: 18px;
+
+  --gap-x: 48px;
+  --gap-y: 46px;
+
+  --card-w: 400px;
+  /* tweak card size centrally */
+  --card-padding: 42px;
+
+  /* Cursor variables — updated by JS (0..1) */
+  --cursor-x: 0.5;
+  --cursor-y: 0.5;
+
+  /* responsiveness */
+  --transition: 0.34s cubic-bezier(.22, .61, .36, 1);
+  --transition-slow: 0.55s cubic-bezier(.18, .9, .22, 1);
+  --float-duration: 6.8s;
+}
+
+/* -----------------------------
+   GLOBAL / SAFETY
+   ----------------------------- */
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: radial-gradient(1000px 420px at 6% 10%, rgba(212, 180, 106, 0.03), transparent 6%), linear-gradient(180deg, var(--bg), #07090b 70%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  overflow-y: auto;
+}
+
+/* reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition: 0s;
+    --transition-slow: 0s;
+    --float-duration: 0s;
+  }
+}
+
+/* -----------------------------
+   ENVIRONMENT: volumetric lights + spotlight driven by cursor
+   ----------------------------- */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  inset: 0;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* ambient soft vignette */
+body::before {
+  background:
+    radial-gradient(1000px 500px at calc(100% - 8%) calc(10%), rgba(20, 40, 60, 0.22), transparent 22%),
+    radial-gradient(800px 420px at 6% 12%, rgba(183, 154, 83, 0.03), transparent 12%);
+  opacity: .95;
+  transition: opacity var(--transition-slow);
+}
+
+/* spotlight follows cursor (uses CSS vars set by JS) */
+body::after {
+  background:
+    radial-gradient(650px 240px at calc(var(--cursor-x) * 100%) calc(var(--cursor-y) * 100%),
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.00) 20%);
+  opacity: 0.9;
+  transform: translateZ(0);
+  transition: background 120ms linear;
+}
+
+/* -----------------------------
+   PARENT — cinematic parallax grid environment
+   ----------------------------- */
+.parent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-y) var(--gap-x);
+  justify-content: center;
+  align-items: flex-start;
+
+  padding: 120px 48px;
+  max-width: 1900px;
+  margin: 0 auto;
+
+  perspective: 1800px;
+}
+
+/* layered ambient behind grid for soft depth */
+.parent .env-layer {
+  position: absolute;
+  inset: -12% -6% auto -6%;
+  height: 220px;
+  background:
+    radial-gradient(600px 160px at 8% 28%, rgba(212, 180, 106, 0.03), transparent 22%),
+    radial-gradient(420px 120px at 88% 72%, rgba(140, 180, 230, 0.02), transparent 30%);
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(18px) saturate(1.08);
+  opacity: 0.98;
+}
+
+/* -----------------------------
+   CARD — GOD-LIMIT 3D GLASS tile
+   ----------------------------- */
+.card {
+  --depth: 28;
+  /* base depth for translateZ */
+  position: relative;
+  z-index: 3;
+  width: clamp(280px, var(--card-w), 42vw);
+  max-width: 100%;
+  min-width: 240px;
+  padding: var(--card-padding);
+  border-radius: calc(var(--radius-lg) - 2px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.018), rgba(0, 0, 0, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.045);
+  box-shadow:
+    0 calc(var(--depth) * 0.6px) calc(var(--depth) * 3.2px) rgba(0, 0, 0, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+
+  text-align: center;
+  overflow: visible;
+  transform-style: preserve-3d;
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow), filter var(--transition);
+  will-change: transform, box-shadow;
+  backdrop-filter: blur(6px) saturate(1.06);
+}
+
+/* micro floating (slow) — nice breathing */
+.card {
+  animation: floatY var(--float-duration) ease-in-out infinite;
+}
+
+@keyframes floatY {
+  0% {
+    transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+  }
+
+  40% {
+    transform: translateY(-6px) translateZ(6px) rotateX(0.6deg) rotateY(-0.4deg);
+  }
+
+  70% {
+    transform: translateY(-3px) translateZ(3px) rotateX(0.2deg) rotateY(-0.2deg);
+  }
+
+  100% {
+    transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+  }
+}
+
+/* subtle inner rim glow using pseudo */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(420px 180px at 10% 12%, rgba(212, 180, 106, 0.06), transparent 14%),
+    radial-gradient(320px 140px at 86% 82%, rgba(100, 170, 210, 0.03), transparent 20%);
+  mix-blend-mode: overlay;
+  opacity: 0.9;
+  transform: translateZ(20px);
+}
+
+/* kinetic 3D tilt based on cursor — uses CSS vars updated by JS */
+.card {
+  /* map cursor into rotation multipliers centred at 0 */
+  --cx: calc((var(--cursor-x, 0.5) - 0.5) * 2);
+  /* -1 .. 1 */
+  --cy: calc((var(--cursor-y, 0.5) - 0.5) * 2);
+  /* -1 .. 1 */
+
+  /* rotation amounts */
+  --rotX: calc(var(--cy) * 8deg);
+  /* tilt forward/back */
+  --rotY: calc(var(--cx) * -10deg);
+  /* tilt left/right */
+
+  transform: perspective(1600px) translateZ(0) rotateX(var(--rotX)) rotateY(var(--rotY));
+}
+
+/* hover intensifies movement */
+.card:hover {
+  transform: perspective(1600px) translateZ(18px) rotateX(calc(var(--rotX) * 1.2)) rotateY(calc(var(--rotY) * 1.2)) translateY(-18px);
+  box-shadow:
+    0 48px 120px rgba(0, 0, 0, 0.74),
+    0 12px 40px rgba(24, 40, 64, 0.45),
+    0 0 60px rgba(184, 198, 255, 0.08);
+}
+
+/* card depth layering — let some cards pop more */
+.card[data-depth="1"] {
+  --depth: 22;
+}
+
+.card[data-depth="2"] {
+  --depth: 34;
+  transform: translateZ(6px);
+}
+
+.card[data-depth="3"] {
+  --depth: 46;
+  transform: translateZ(12px);
+}
+
+/* inside content z-order to stay above effect layers */
+.card>* {
+  position: relative;
+  z-index: 6;
+}
+
+/* heading and text refined */
+.card h3 {
+  font-size: 1.46rem;
+  margin: 12px 0 6px;
+  color: var(--white);
+}
+
+.card p {
+  color: var(--primary-muted);
+  font-size: 0.97rem;
+  line-height: 1.68;
+  margin: 8px 0 18px;
+}
+
+/* -----------------------------
+   IMAGE — GOD-LIMIT PROFILE / ART
+   ----------------------------- */
+.card img {
+  height: 124px;
+  width: 124px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 18px;
+
+  border: 4px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 22px 50px rgba(0, 0, 0, 0.62),
+    0 0 26px rgba(184, 198, 255, 0.18),
+    inset 0 0 18px rgba(255, 255, 255, 0.06);
+
+  transition: transform 420ms cubic-bezier(.18, .9, .22, 1), box-shadow 420ms ease, filter 420ms ease;
+  transform-style: preserve-3d;
+}
+
+/* orbital rim aura (pseudo element positioned relative to image) */
+.card .img-wrap {
+  position: relative;
+  display: inline-block;
+  padding: 6px;
+  border-radius: 999px;
+  z-index: 5;
+}
+
+.card .img-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 20%, rgba(212, 180, 106, 0.08), transparent 18%), radial-gradient(circle at 70% 80%, rgba(140, 180, 255, 0.06), transparent 22%);
+  filter: blur(14px) contrast(1.02);
+  z-index: -1;
+  opacity: 0.95;
+  transition: opacity var(--transition);
+}
+
+/* on hover the orbit intensifies */
+.card:hover .img-wrap::after {
+  opacity: 1;
+  filter: blur(20px) contrast(1.05);
+  transform: scale(1.02);
+}
+
+/* image hover intensify */
+.card:hover img {
+  transform: translateY(-12px) scale(1.08) rotate3d(1, -0.2, 0.08, 1.4deg);
+  filter: brightness(1.12) saturate(1.08);
+  box-shadow:
+    0 40px 110px rgba(0, 0, 0, 0.72),
+    0 0 48px rgba(184, 198, 255, 0.36),
+    inset 0 0 28px rgba(255, 255, 255, 0.10);
+}
+
+/* -----------------------------
+   CTA BUTTON — GOD-LIMIT SCI-FI METAL
+   ----------------------------- */
+.card .btn {
+  --bgA: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(0, 0, 0, 0.12));
+  --bgB: linear-gradient(180deg, #1e4a5a, #0b2b31);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--bgA), var(--bgB);
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: .24px;
+  cursor: pointer;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.62),
+    0 8px 30px rgba(12, 28, 46, 0.28),
+    inset 0 -8px 14px rgba(0, 0, 0, 0.45);
+  transition: transform 360ms cubic-bezier(.22, .61, .36, 1), box-shadow 360ms ease, filter 260ms ease;
+}
+
+/* btn hover cinematic */
+.card .btn:hover {
+  transform: translateY(-6px) scale(1.03);
+  filter: brightness(1.08) saturate(1.06);
+  box-shadow:
+    0 30px 110px rgba(0, 0, 0, 0.72),
+    0 10px 36px rgba(12, 28, 46, 0.36),
+    0 0 36px rgba(184, 198, 255, 0.12);
+}
+
+/* focus for accessibility */
+.card .btn:focus {
+  outline: none;
+  box-shadow:
+    0 0 0 8px rgba(212, 180, 106, 0.12),
+    0 28px 68px rgba(0, 0, 0, 0.6);
+}
+
+/* -----------------------------
+   EXTRA: decorative accent bar + metadata chips
+   ----------------------------- */
+.card .accent {
+  width: 86px;
+  height: 6px;
+  margin: 16px auto;
+  border-radius: 12px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-2));
+  box-shadow: 0 10px 28px rgba(183, 154, 83, 0.12), inset 0 -3px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* small chips row */
+.card .chips {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.card .chip {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  color: var(--primary-muted);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+/* -----------------------------
+   RESPONSIVE TWEAKS
+   ----------------------------- */
+@media (max-width: 1200px) {
+  :root {
+    --card-w: 360px;
+    --gap-x: 36px;
+    --gap-y: 36px;
+  }
+
+  .parent {
+    padding: 90px 28px;
+    gap: var(--gap-y) var(--gap-x);
+  }
+}
+
+@media (max-width: 860px) {
+  :root {
+    --card-w: 320px;
+    --gap-x: 26px;
+    --gap-y: 26px;
+  }
+
+  .card {
+    padding: 28px;
+  }
+
+  .card img {
+    height: 110px;
+    width: 110px;
+  }
+
+  .parent {
+    padding: 60px 18px;
+    gap: var(--gap-y) var(--gap-x);
+  }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --card-w: 92vw;
+  }
+
+  .card {
+    width: 92vw;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .card h3 {
+    font-size: 1.18rem;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .parent {
+    padding: 36px 12px;
+    gap: 18px;
+  }
+}
+
+/* -----------------------------
+   FINAL polishing: performance & layering
+   ----------------------------- */
+/* keep heavy glows off for printed pages */
+@media print {
+
+  body::before,
+  body::after,
+  .parent .env-layer,
+  .card::before,
+  .card .img-wrap::after {
+    display: none !important;
+  }
+
+  .card,
+  .navbar {
+    box-shadow: none !important;
+    background: #111 !important;
+    border: none !important;
+    color: #000 !important;
+  }
+}

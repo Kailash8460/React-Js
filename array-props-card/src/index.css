@@ -1,0 +1,190 @@
+/* ==============================================
+   GOD-LIMIT V2 — GLOBAL SYSTEM
+   ============================================== */
+
+/* :root {
+  --bg: #0a0f14;
+  --surface: #111722;
+  --surface-light: #1a2332;
+  --surface-glass: rgba(255, 255, 255, 0.06);
+
+  --primary: #b8c6ff;
+  --primary-soft: #9dacff;
+  --white: #f4f7fb;
+  --text: #d1d6e3;
+
+  --radius: 16px;
+  --radius-lg: 22px;
+
+  --blur: 18px;
+
+  --transition-fast: 0.15s ease;
+  --transition: 0.28s ease;
+  --transition-slow: 0.48s cubic-bezier(.25, .8, .25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+html,
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+} */
+
+/* NEW VERSION 2 */
+
+/* ==============================================
+   GOD-LIMIT V3 — GLOBAL + SCROLLBAR
+   ============================================== */
+
+/* :root {
+  --bg: #0a0f14;
+  --surface: #111722;
+  --surface-light: #1a2332;
+
+  --primary: #b8c6ff;
+  --primary-soft: #9dacff;
+  --white: #f4f7fb;
+  --text: #d1d6e3;
+
+  --radius: 16px;
+  --radius-lg: 22px;
+
+  --blur: 18px;
+
+  --transition-fast: 0.15s ease;
+  --transition: 0.28s ease;
+  --transition-slow: 0.48s cubic-bezier(.25, .8, .25, 1);
+
+  --scroll-track: #0d131c;
+  --scroll-thumb: #2a3450;
+  --scroll-thumb-hover: #3b4b72;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+} */
+
+/* ==============================================
+   CUSTOM SCROLLBAR — VisionOS Dark
+   ============================================== */
+
+/* ::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 10px;
+  border: 3px solid var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+} */
+
+/* NEW VERSION 3 */
+
+/* index.css — GOD-LIMIT V4 (core variables + resets + scrollbar) */
+:root {
+  --bg: #070a0f;
+  --surface: #0f1620;
+  --surface-2: #141925;
+  --glass: rgba(255, 255, 255, 0.04);
+
+  --gold: #d4b46a;
+  --gold-2: #b79a53;
+
+  --primary: #b8c6ff;
+  --muted: #9fb0c6;
+  --text: #d6dce6;
+  --white: #f8fbff;
+
+  --radius: 14px;
+  --radius-lg: 20px;
+
+  --shadow-1: 0 10px 30px rgba(0, 0, 0, 0.55);
+  --shadow-2: 0 28px 80px rgba(0, 0, 0, 0.66);
+
+  --ui-gap: 48px;
+
+  --fast: 160ms;
+  --mid: 320ms;
+  --slow: 520ms;
+}
+
+/* resets */
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), #05060a 80%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block
+}
+
+/* accessible reduce-motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fast: 0ms;
+    --mid: 0ms;
+    --slow: 0ms;
+  }
+
+  * {
+    transition: none !important;
+    animation: none !important
+  }
+}
+
+/* custom scrollbar (dark, subtle) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px
+}
+
+::-webkit-scrollbar-track {
+  background: #071119
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #263245, #1b2536);
+  border-radius: 10px;
+  border: 3px solid #071119
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #32425b, #223046)
+}

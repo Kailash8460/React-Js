@@ -1,0 +1,86 @@
+/* ==============================================
+   GOD-LIMIT V2 — GLASS NAVBAR
+   ============================================== */
+
+/* .navbar {
+    width: 100%;
+    padding: 22px 36px;
+
+    background: linear-gradient(to bottom right,
+            rgba(17, 23, 34, 0.75),
+            rgba(26, 35, 50, 0.75));
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar h2 {
+    color: var(--white);
+    font-size: 1.45rem;
+    letter-spacing: 0.4px;
+    font-weight: 700;
+    user-select: none;
+} */
+
+/* NEW VERSION 2 */
+
+/* GOD-LIMIT V3 NAVBAR */
+
+/* .navbar {
+    width: 100%;
+    padding: 22px 36px;
+
+    background: linear-gradient(to bottom right,
+            rgba(17, 23, 34, 0.75),
+            rgba(26, 35, 50, 0.75));
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar h2 {
+    color: var(--white);
+    font-size: 1.45rem;
+    font-weight: 700;
+} */
+
+/* NEW VERSION 3 */
+
+/* navbar.css — GOD-LIMIT V4 */
+.navbar {
+    width: 100%;
+    padding: clamp(12px, 1.8vw, 22px) clamp(18px, 3vw, 36px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.06));
+    backdrop-filter: blur(10px) saturate(1.05);
+    -webkit-backdrop-filter: blur(10px) saturate(1.05);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: var(--shadow-1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar h2 {
+    color: var(--gold);
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    font-size: clamp(1rem, 1.5vw, 1.28rem);
+}

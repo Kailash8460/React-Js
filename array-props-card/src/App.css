@@ -1,0 +1,104 @@
+/* ==============================================
+   GOD-LIMIT V2 — GLOBAL LAYOUT WRAPPER
+   Responsive + Cinematic card balancing
+   ============================================== */
+
+/* .parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(30px, 3vw, 55px);
+  padding: clamp(40px, 6vw, 100px) 30px;
+  max-width: 1900px;
+  margin: auto;
+}
+
+@media (max-width: 1400px) {
+  .parent {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .parent {
+    gap: 28px;
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .parent {
+    padding-top: 50px;
+    gap: 22px;
+  }
+} */
+
+/* NEW VERSION 2 */
+
+/* ==============================================
+   GOD-LIMIT V3 — LAYOUT ENGINE
+   ============================================== */
+
+/* .parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  gap: clamp(26px, 3vw, 55px);
+  padding: clamp(40px, 6vw, 100px) 30px;
+
+  max-width: 1900px;
+  margin: auto;
+
+  perspective: 2000px;
+} */
+
+/* NEW VERSION 3 */
+
+/* app.css — GOD-LIMIT V4 layout + adaptive sizing */
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(20px, 2.5vw, 56px);
+  padding: clamp(36px, 6vw, 120px);
+  max-width: 2080px;
+  margin: 0 auto;
+  perspective: 2400px;
+  /* enables 3d fidelity */
+  --card-scale: 1;
+}
+
+/* responsive adaptive card sizing guidance (you can override) */
+@media (min-width: 1600px) {
+  :root {
+    --ui-gap: 56px;
+  }
+
+  .parent {
+    gap: clamp(28px, 1.8vw, 68px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .parent {
+    padding-top: 80px;
+    gap: clamp(20px, 3.5vw, 40px);
+  }
+}
+
+@media (max-width: 800px) {
+  .parent {
+    gap: 20px;
+    padding: 48px 20px;
+    --card-scale: 0.98;
+  }
+}
+
+@media (max-width: 480px) {
+  .parent {
+    padding: 28px 14px;
+    gap: 16px;
+    --card-scale: 0.96;
+  }
+}
