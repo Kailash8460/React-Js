@@ -4,6 +4,8 @@ import Tags from '../Tags/Tags';
 import './Card.css';
 
 const Card = (props) => {
+    console.log(props);
+
     return (
         <div className="card">
             <div>
