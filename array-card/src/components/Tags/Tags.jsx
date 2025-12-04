@@ -1,9 +1,9 @@
 import React from 'react'
-import './Tags.css'
+import styles from './Tags.module.css'
 
 const Tags = (props) => {
     return (
-        <div className="tags" style={{ backgroundColor: props.tagBgColor }}>
+        <div className={styles.tags} style={{ backgroundColor: props.tagBgColor }}>
             <h4>{props.tagName}</h4>
         </div>
     )

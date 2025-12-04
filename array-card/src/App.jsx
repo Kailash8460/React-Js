@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from './components/Navbar/Navbar'
 import Card from './components/Card/Card'
 import User from './components/User/User'
-import './App.css'
+import styles from './App.module.css'
 
 const App = () => {
     const user = [
@@ -262,9 +262,8 @@ const App = () => {
         }
     ];
 
-
     return (
-        <div className='page'>
+        <div className={styles.page}>
             <Navbar />
             {/* <div className="parent">
                 <Card />
@@ -273,27 +272,27 @@ const App = () => {
                 <Card />
             </div> */}
             <h2>Users by passing name directly</h2>
-            <div className="parent">
+            <div className={styles.parent}>
                 <User name="Kailash" />
                 <User name="Ravi" />
                 <User name="Rahul" />
                 <User name="Rakesh" />
             </div>
             <h2>Users by passing name through array</h2>
-            <div className="parent">
+            <div className={styles.parent}>
                 <User name={user[0].name} />
                 <User name={user[1].name} />
                 <User name={user[2].name} />
                 <User name={user[3].name} />
             </div>
             <h2>Users by passing name through array using maps</h2>
-            <div className="parent">
+            <div className={styles.parent}>
                 {user.map((user) => (
                     <User name={user.name} />
                 ))}
             </div>
             <h2>Job Cards by passing values through array using maps</h2>
-            <div className="parent">
+            <div className={styles.parent}>
                 {jobOpenings.map(function (jobs) {
                     return <Card
                         companyLogo={jobs.companyLogo}
