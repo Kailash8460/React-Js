@@ -1,0 +1,58 @@
+---GUIDE ON APPLICATION CREATION AND OTHER INSTALLATIONS---
+
+- PROJECT CREATION (React App)
+npx create-react-app {ecommerce-application}
+cd {ecommerce-application}
+npm start
+
+- CREATE A PRODUCTION BUILD [https://cra.link/deployment]
+npm install -g serve
+-POWERSHELL BYPASS POLICY JUST FOR ONE TERMINAL AND ONCE CLOSED THEN NEED TO WRITE THIS COMMAND AGAIN
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+serve -s build
+
+- PROJECT CREATION (React Vite App)
+npm create vite@latest
+then proceed with y
+add project name (also will be the folder name)
+package name
+react select as framework
+javascript as variant
+not to use rolldown
+yes with npm and start now
+
+Shortcuts Belo:
+  press h + enter to show help
+  press r + enter to restart the server
+  press u + enter to show server url
+  press o + enter to open in browser
+  press c + enter to clear console
+  press q + enter to quit
+
+- TAILWIND CSS INSTALLATION TO ANY PROJECT (Tailwind CSS in Vite App)
+
+1. Create your project
+Start by creating a new Vite project if you don’t have one set up already.
+npm create vite 
+(select React Js which we are currently working on it)
+
+2. Install Tailwind CSS
+Install tailwindcss and @tailwindcss/vite via npm.
+npm install tailwindcss @tailwindcss/vite
+
+3. Configure the Vite plugin
+Add the @tailwindcss/vite plugin to your Vite configuration. 
+(in vite.config.ts file)
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite' // this one and...
+
+export default defineConfig({
+  plugins: [
+    tailwindcss(), // this 2 lines need to add there
+  ],
+})
+
+4. Import Tailwind CSS - Utility and Mobile first CSS
+Add an @import to your CSS file that imports Tailwind CSS. 
+(you can add this directly in index.css file so that you can access it anywhere)
+@import "tailwindcss";
