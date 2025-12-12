@@ -72,3 +72,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ### array-card
 
 
+
+### ui-project-2 & ui-project
+
+Project Layout Link: https://i.pinimg.com/1200x/e7/67/92/e76792c7f2ae4d566a1725515b521191.jpg
+
